@@ -1,55 +1,50 @@
-import React from "react";
-/**Add a "reset" button to the Login component that clears the content of all three inputs when clicked. */
+import React, { createRef } from "react";
+/**Implement an UncontrolledLogin component that implements all the operations of the Login component,
+ * but does so using uncontrolled components.*/
 export class Login extends React.Component {
+  _formRef = createRef();
   state = {
     username: "",
     password: "",
     remember: false,
   };
 
-  handleInputs = (event) => {
-    let value = event.target.value;
-    let checked = event.target.checked;
-    let name = event.target.name;
-    console.log(checked);
+  login = (event) => {
+    event.preventDefault();
+    const { username, password, remember } = event.target.elements;
     this.setState({
-      [name]: value ?? checked,
+      username: username.value,
+      password: password.value,
+      remember: remember.checked,
     });
   };
 
-  resetInput = () => {
+  componentDidUpdate() {
+    console.log(this.state);
+  }
+
+  reset = (event) => {
+    this._formRef.current.elements.username.value = "";
+    this._formRef.current.elements.password.value = "";
+    this._formRef.current.elements.remember.checked = false;
     this.setState({
       username: "",
       password: "",
       remember: false,
     });
   };
+
   render() {
     return (
-      <div>
-        <input
-          type="text"
-          onChange={this.handleInputs}
-          value = {this.state.username}
-          name="username"
-          placeholder="Username"
-        ></input>
-        <input
-          type="password"
-          onChange={this.handleInputs}
-          value = {this.state.password}
-          name="password"
-          placeholder="Password"
-        ></input>
-        <input
-          type="checkbox"
-          onChange={this.handleInputs}
-          name="remember"
-          checked={this.state.remember}
-        ></input>
-        <button onClick={() => this.props.onLogin(this.state)}>Login</button>
-        <button onClick={this.resetInput}>Reset</button>
-      </div>
+      <form ref={this._formRef} onSubmit={this.login}>
+        <input type="text" name="username" />
+        <input type="password" name="password" />
+        <input type="checkbox" name="remember" />
+        <button type="sumbit">Login</button>
+        <button onClick={this.reset} type="button">
+          Reset
+        </button>
+      </form>
     );
   }
 }
