@@ -45,7 +45,7 @@ export class TodoList extends React.Component {
           {this.state.items.map((el, index) => {
             return (
               <li key={el + index}>
-                {el}{" "}
+                {el}
                 <button onClick={() => this.removeItem(index)}>Remove</button>
               </li>
             );
