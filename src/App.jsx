@@ -1,9 +1,10 @@
 import React from "react";
+import { Counter } from "./Counter";
 
 export class App extends React.Component{
     render(){
         return <div>
-            <h1 className="text-3xl font-bold underline">CIAO</h1>
+            <Counter/>
         </div>
     }
 }
