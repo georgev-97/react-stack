@@ -13,9 +13,9 @@ export class Login extends React.Component {
     let value = event.target.value;
     let checked = event.target.checked;
     let name = event.target.name;
-    console.log(checked)
+    console.log(checked);
     this.setState({
-      [name]: value ?? checked
+      [name]: value ?? checked,
     });
   };
   render() {
@@ -38,7 +38,14 @@ export class Login extends React.Component {
           onChange={this.handleInputs}
           name="remember"
         ></input>
-        <button onClick={() => this.props.onLogin(this.state)}>Login</button>
+        <button
+          style={{
+            backgroundColor: this.state.password.length < 8 ? "red" : "green",
+          }}
+          onClick={() => this.props.onLogin(this.state)}
+        >
+          Login
+        </button>
       </div>
     );
   }
