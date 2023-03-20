@@ -16,7 +16,7 @@ import { Age } from "./Age";
 //     name: "George"
 // }
 
-export function Welcome({name, age}){
+export function Welcome({name ="George", age}){
     return(
         <div>
             <p>Welcome, {name}!</p>
