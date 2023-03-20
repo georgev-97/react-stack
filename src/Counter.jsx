@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export function Counter({initialValue=0}){
+export function Counter({ initialValue = 0, onCountChange }) {
   let [counter, setCounter] = useState(initialValue);
-  return(
+
+  useEffect(() => {
+    onCountChange(counter);
+  }, [counter]);
+
+  return (
     <div>
       <h1>{counter}</h1>
-      <button onClick={() => setCounter(counter => counter + 1)}>+</button>
+      <button onClick={() => setCounter((counter) => counter + 1)}>+</button>
     </div>
-  )
+  );
 }
