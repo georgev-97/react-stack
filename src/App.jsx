@@ -1,9 +1,8 @@
 import React from "react";
+import { Sum } from "./Sum";
 
 export class App extends React.Component{
     render(){
-        return <div>
-            <h1 className="text-3xl font-bold underline">CIAO</h1>
-        </div>
+        return <Sum numbers={[1,2,3,4,5,6,7,8,9,10]}/>
     }
 }
