@@ -4,7 +4,7 @@ import Container from "./Container";
 export class App extends React.Component{
     render(){
         return (
-            <Container className="container">
+            <Container>
                 <h1>Children component</h1>
             </Container>
         )
