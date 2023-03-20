@@ -1,5 +1,6 @@
 import React from "react";
-import {Counter}  from "./Counter";
+import {Pokemon}  from "./Pokemon";
+//https://pokeapi.co/api/v2/pokemon/{POKEMON_NAME}
 
 export class App extends React.Component{
     onCountChange = (counter) =>{
@@ -7,7 +8,7 @@ export class App extends React.Component{
     }
     render(){
         return <div>
-            <Counter initialValue={0} onCountChange={this.onCountChange} />
+            <Pokemon/>
         </div>
     }
 }
