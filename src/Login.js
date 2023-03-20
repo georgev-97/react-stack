@@ -1,45 +1,36 @@
-import React from "react";
-/*
-Add a "login" button to the Login component. This button should be disabled as long as the username and password inputs are empty. When clicked,
- the event handler attached to the button should call an onLogin function passed as a prop to the Login component, passing it the state.*/
-export class Login extends React.Component {
-  state = {
+import { useState } from "react";
+
+export function Login(props) {
+  const [formData, setFormData] = useState({
     username: "",
     password: "",
     remember: false,
+  });
+
+  const handleInputs = (event) => {
+    const {value, checked, name, type} = event.target;
+    setFormData({ ...formData, [name]: type==="checkbox" ? checked : value});
   };
 
-  handleInputs = (event) => {
-    let value = event.target.value;
-    let checked = event.target.checked;
-    let name = event.target.name;
-    console.log(checked)
-    this.setState({
-      [name]: value ?? checked
-    });
-  };
-  render() {
-    return (
-      <div>
-        <input
-          type="text"
-          onChange={this.handleInputs}
-          name="username"
-          placeholder="Username"
-        ></input>
-        <input
-          type="password"
-          onChange={this.handleInputs}
-          name="password"
-          placeholder="Password"
-        ></input>
-        <input
-          type="checkbox"
-          onChange={this.handleInputs}
-          name="remember"
-        ></input>
-        <button onClick={() => this.props.onLogin(this.state)}>Login</button>
-      </div>
-    );
-  }
+  const { username, password, remember } = formData;
+  return (
+    <div>
+      <input
+        type="text"
+        onChange={handleInputs}
+        name="username"
+        placeholder="Username"
+        value={username}
+      ></input>
+      <input
+        type="password"
+        onChange={handleInputs}
+        name="password"
+        placeholder="Password"
+        value = {password}
+      ></input>
+      <input type="checkbox" onChange={handleInputs} name="remember"></input>
+      <button onClick={() => props.onLogin(formData)}>Login</button>
+    </div>
+  );
 }
