@@ -1,9 +1,10 @@
 import React from "react";
+import { Login } from "./Login";
 
 export class App extends React.Component{
     render(){
         return <div>
-            <h1 className="text-3xl font-bold underline">CIAO</h1>
+            <Login/>
         </div>
     }
 }
