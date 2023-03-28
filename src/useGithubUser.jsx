@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 export function useGithubUser(username) {
   const [user, setUser] = useState(null);
@@ -16,8 +16,6 @@ export function useGithubUser(username) {
         .then((user) => setUser(user))
         .catch((error) => setError(error.message));
   },[username])
-  useEffect(() => {
-    fetchUserData();
-  }, [username, fetchUserData]);
+ 
   return [user, error, fetchUserData];
 }
