@@ -1,28 +1,30 @@
-const { useState } = require("react");
+const { useState, useCallback } = require("react");
 
 function useCounter(initialValue) {
   const [counter, setCounter] = useState(initialValue);
-  function increment() {
+  const increment = useCallback(() => {
     setCounter((counter) => counter + 1);
-  }
-  function decrement() {
+  }, []);
+
+  const decrement = useCallback(() => {
     setCounter((counter) => counter - 1);
-  }
-  function reset() {
+  }, []);
+
+  const reset = useCallback(() => {
     setCounter(initialValue);
-  }
+  }, [initialValue]);
   return [counter, increment, decrement, reset];
 }
 
-export function Counter(props){
-    const [counter, increment, decrement, reset] = useCounter(42);
+export function Counter(props) {
+  const [counter, increment, decrement, reset] = useCounter(42);
 
-    return(
-        <div>
-            <h1>{counter}</h1>
-            <button onClick={increment}>+</button>
-            <button onClick={decrement}>-</button>
-            <button onClick={reset}>reset</button>
-        </div>
-    )
+  return (
+    <div>
+      <h1>{counter}</h1>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+      <button onClick={reset}>reset</button>
+    </div>
+  );
 }
