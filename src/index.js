@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { App } from './App';
+import { Root } from './Root';
 //Create a Welcome class component that receives a name prop and renders the Welcome, 
 //{name}! message within a p tag. Render this component to you App component, passing it a name prop of your choosing.
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(<Root/>, document.getElementById('root'));

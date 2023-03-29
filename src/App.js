@@ -1,12 +1,13 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
 import { Welcome } from "./Welcome";
 
 export class App extends React.Component {
   render() {
     return (
-      <div>
-        <Welcome name={<strong>Maria</strong>} age={26} />
-      </div>
+      <Routes>
+        <Route path="/" element={<Welcome name={<strong>Maria</strong>} age={26} />}/>
+      </Routes>
     );
   }
 }
