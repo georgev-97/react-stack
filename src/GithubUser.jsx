@@ -1,7 +1,7 @@
 import { useGithubUser } from "./useGithubUser";
 
 export function GithubUser({ username = "" }) {
-  const [user,error] = useGithubUser(username);
+  const [user,error, mutate] = useGithubUser(username);
   
   return (
     <div>
@@ -22,6 +22,7 @@ export function GithubUser({ username = "" }) {
         </div>
       )}
       {error && <h1 className="text-red-500">{error}</h1>}
+      <button onClick={() => mutate()}>Refresh</button>
     </div>
   );
 }
