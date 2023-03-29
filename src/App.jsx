@@ -1,7 +1,9 @@
-import React from "react";
-import {GithubUser} from './GithubUser';
-export class App extends React.Component{
-    render(){
-        return <GithubUser username="georgev-97"/>
-    }
+import { Route, Routes } from "react-router-dom";
+import {ShowGithubUser} from './ShowGithubUser';
+export function App(){
+    return(
+        <Routes>
+            <Route path="users/:username" element={<ShowGithubUser/>}/>
+        </Routes>
+    )
 }
