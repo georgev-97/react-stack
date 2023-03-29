@@ -1,9 +1,20 @@
 import React from "react";
+import { Link, Route, Routes } from "react-router-dom";
 
-export class App extends React.Component{
-    render(){
-        return <div>
-            <h1 className="text-3xl font-bold underline">CIAO</h1>
-        </div>
-    }
+export class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/login">Login</Link>
+
+        <Routes>
+          <Route path="/" element={<h1>Home</h1>} />
+          <Route path="/about" element={<h1>About</h1>} />
+          <Route path="/login" element={<h1>Login</h1>} />
+        </Routes>
+      </div>
+    );
+  }
 }
