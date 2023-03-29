@@ -1,9 +1,8 @@
 import React from "react";
+import { FilteredList } from "./FilteredList";
 
 export class App extends React.Component{
     render(){
-        return <div>
-            <h1 className="text-3xl font-bold underline">CIAO</h1>
-        </div>
+        return <FilteredList items={[{id: "foo", age: 16}, {id: "foo2", age: 35}, {id: "foo3", age:12}, {id: "foo4", age:53}, {id: "foo5", age:22}]}/>
     }
 }
